@@ -168,7 +168,7 @@ sales_data = loader.create_sales_dataset(
 
 #### Business Metrics Module
 ```python
-from business_metrics import BusinessMetricsCalculator, MetricsVisualizer
+from business_metrics import BusinessMetricsCalculator, format_currency, format_percentage
 
 # Calculate metrics
 metrics_calc = BusinessMetricsCalculator(sales_data)
@@ -177,10 +177,13 @@ report = metrics_calc.generate_comprehensive_report(
     previous_year=2022
 )
 
-# Create visualizations
-visualizer = MetricsVisualizer(report)
-revenue_fig = visualizer.plot_revenue_trend()
-category_fig = visualizer.plot_category_performance()
+# Access specific metrics
+revenue_metrics = report['revenue_metrics']
+print(f"Total Revenue: {format_currency(revenue_metrics['total_revenue'])}")
+print(f"Revenue Growth: {format_percentage(revenue_metrics['revenue_growth_rate'])}")
+
+# Visualizations are created within the EDA_Refactored.ipynb notebook
+# using matplotlib, seaborn, and plotly
 ```
 
 ## Key Business Metrics
@@ -237,9 +240,9 @@ DELIVERY PERFORMANCE:
 ## Customization Options
 
 ### Adding New Metrics
-1. Extend the `BusinessMetricsCalculator` class in `business_metrics.py`
-2. Add visualization methods to `MetricsVisualizer` class
-3. Update the notebook to display new metrics
+1. Add calculation method to the `BusinessMetricsCalculator` class in `business_metrics.py`
+2. Create visualizations in the notebook using matplotlib, seaborn, or plotly
+3. Update the notebook to display and interpret new metrics
 
 ### Custom Visualizations
 ```python
