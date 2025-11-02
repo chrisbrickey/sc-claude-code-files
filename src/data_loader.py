@@ -26,7 +26,7 @@ class EcommerceDataLoader:
         processed_data (Dict[str, pd.DataFrame]): Dictionary of cleaned datasets
     """
 
-    def __init__(self, data_path: str = 'ecommerce_data/'):
+    def __init__(self, data_path: str = 'data/ecommerce/'):
         """
         Initialize the data loader.
 
@@ -308,14 +308,14 @@ def categorize_delivery_speed(days: float) -> str:
         return '8+ days'
 
 
-def load_and_process_data(data_path: str = 'ecommerce_data/') -> Tuple[EcommerceDataLoader, Dict[str, pd.DataFrame]]:
+def load_and_process_data(data_path: str = 'data/ecommerce/') -> Tuple[EcommerceDataLoader, Dict[str, pd.DataFrame]]:
     """
     Convenience function to load and process all data in one step.
 
     This is the recommended way to initialize the data loader for quick starts.
 
     Args:
-        data_path (str): Path to data directory. Defaults to 'ecommerce_data/'.
+        data_path (str): Path to data directory. Defaults to 'data/ecommerce/'.
 
     Returns:
         Tuple[EcommerceDataLoader, Dict[str, pd.DataFrame]]:
